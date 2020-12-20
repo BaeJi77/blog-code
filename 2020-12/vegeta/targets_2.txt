@@ -1,5 +1,3 @@
-GET http://127.0.0.1:9997
-
 POST http://127.0.0.1:9997
 X-Account-ID: 99
 # Can make comment
