@@ -1,0 +1,17 @@
+[
+  {
+    "number": 4,
+    "name": "hoon",
+    "job": "developer"
+  },
+  {
+    "number": 5,
+    "name": "baeji",
+    "job": "developer"
+  },
+  {
+    "number": 6,
+    "name": "얄리얄리",
+    "job": "developer"
+  }
+]
