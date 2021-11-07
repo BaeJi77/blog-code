@@ -36,3 +36,14 @@ func main() {
 	r8 := limiter.Allow()
 	fmt.Printf("request r8: %v\n", r8)
 }
+
+/*
+request r1: true
+request r2: true
+request r3: true
+request r4: true
+request r5: true
+request r6: false
+request r7: true
+request r8: false
+*/
