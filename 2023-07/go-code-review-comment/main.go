@@ -26,6 +26,6 @@ func main() {
 	copiedData2.ModifyValue(11) // This will modify the original data
 
 	// Print the values
-	fmt.Println("Original Data:", data2.Value)
-	fmt.Println("Copied Data:", copiedData2.Value)
+	fmt.Println("Original Data 2:", data2.Value)
+	fmt.Println("Copied Data 2:", copiedData2.Value)
 }
