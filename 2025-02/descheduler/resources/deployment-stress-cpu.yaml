@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: continuous-cpu-stress-deployment
+  namespace: default
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: continuous-cpu-stress
+  template:
+    metadata:
+      labels:
+        app: continuous-cpu-stress
+    spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          whenUnsatisfiable: ScheduleAnyway
+          topologyKey: kubernetes.io/hostname
+          labelSelector:
+            matchLabels:
+              app: continuous-cpu-stress
+      containers:
+        - name: cpu-stressor
+          image: narmidm/k8s-pod-cpu-stressor
+          args: ["-cpu", "0.5", "-forever"]

@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: descheduler-policy-configmap
+  namespace: kube-system
+data:
+  policy.yaml: |
+    apiVersion: "descheduler/v1alpha2"
+    kind: "DeschedulerPolicy"
+    gracePeriodSeconds: 60
+    profiles:
+      - name: ProfileName
+        pluginConfig:
+          - name: "DefaultEvictor"
+            args:
+              ignorePodsWithoutPDB: true
+              labelSelector: "app=continuous-cpu-stress"
+              nodeSelector: "node-role.kubernetes.io/worker"
+          - name: "LowNodeUtilization"
+            args:
+              thresholds:
+                "cpu" : 10
+              targetThresholds:
+                "cpu" : 20
+        plugins:
+          balance:
+            enabled:
+              - "LowNodeUtilization"
